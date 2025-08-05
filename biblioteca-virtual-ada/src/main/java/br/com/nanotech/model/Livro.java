@@ -8,7 +8,8 @@ public class Livro {
     private Autor autor;  // apenas um autor
     private Editora editora;
 
-    public Livro(String titulo, String dataPublicacao, String resumo) {
+
+    public Livro(String titulo, String dataPublicacao, String resumo, Autor autor, Editora editora) {
         this.titulo = titulo;
         this.dataPublicacao = dataPublicacao;
         this.resumo = resumo;
