@@ -6,11 +6,15 @@ import br.com.nanotech.model.Livro;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LivrosController {
+public class CatalogoController {
 
     private List<Autor> autores = new ArrayList<>();
 
-    public LivrosController() {
+    public CatalogoController() {
+        carregarCatalogo();
+    }
+
+    public void carregarCatalogo() {
         Autor autor1 = new Autor("Machado de Assis", "21/06/1839");
         autor1.adicionarLivro(new Livro("Dom Casmurro", "1899", "Romance sobre ciúmes e memórias"));
         autor1.adicionarLivro(new Livro("Memórias Póstumas de Brás Cubas", "1881", "Narrado por um defunto"));
