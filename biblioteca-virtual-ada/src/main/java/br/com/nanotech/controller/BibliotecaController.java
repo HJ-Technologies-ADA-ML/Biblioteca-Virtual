@@ -4,46 +4,64 @@ import br.com.nanotech.model.Autor;
 import br.com.nanotech.model.Editora;
 import br.com.nanotech.model.Livro;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BibliotecaController {
     private List<Livro> livros;
     private List<Autor> autores;
-    private List<Editora> editoras;
 
-    public BibliotecaController(List<Livro> livros, List<Autor> autores, List<Editora> editoras) {
-        this.livros = livros;
-        this.autores = autores;
-        this.editoras = editoras;
+    public BibliotecaController() {
+        this.autores = new ArrayList<>();
+        this.livros = new ArrayList<>();
     }
 
     public void listarTodosLivros() {
+        System.out.println("\n📚 TODOS OS LIVROS:");
         for (Livro livro : livros) {
             System.out.println(livro);
             System.out.println("--------------------");
         }
     }
 
-    public void buscarLivroPorTitulo(String titulo) {
-        boolean encontrado = false;
-        for (Livro livro : livros) {
-            if (livro.getTitulo().equalsIgnoreCase(titulo)) {
-                System.out.println(livro);
-                encontrado = true;
-                break;
+    public List<Livro> buscarPorAutor(String nomeAutor) {
+        List<Livro> encontrados = new ArrayList<>();
+        for (Autor autor : autores) {
+            if (autor.getNome().toLowerCase().contains(nomeAutor.toLowerCase())) {
+                encontrados.addAll(autor.getLivros());
             }
         }
-        if (!encontrado) {
-            System.out.println("Livro não encontrado.");
+        return encontrados;
+    }
+
+    public List<Livro> buscarPorAno(String ano) {
+        List<Livro> encontrados = new ArrayList<>();
+        for (Livro livro : livros) {
+            if (livro.getDataPublicacao().equals(ano)) {
+                encontrados.add(livro);
+            }
         }
+        return encontrados;
+    }
+
+    public List<Livro> buscarPorTitulo(String termo) {
+        List<Livro> encontrados = new ArrayList<>();
+        for (Livro livro : livros) {
+            if (livro.getTitulo().toLowerCase().contains(termo.toLowerCase())) {
+                encontrados.add(livro);
+            }
+        }
+        return encontrados;
     }
 
     public void listarLivrosPorAutor(String nomeAutor) {
+        System.out.println("\n📖 LIVROS DO AUTOR '" + nomeAutor + "':");
         boolean encontrado = false;
         for (Autor autor : autores) {
             if (autor.getNome().equalsIgnoreCase(nomeAutor)) {
                 for (Livro livro : autor.getLivros()) {
                     System.out.println(livro);
+                    System.out.println("--------------------");
                 }
                 encontrado = true;
                 break;
@@ -51,19 +69,6 @@ public class BibliotecaController {
         }
         if (!encontrado) {
             System.out.println("Autor não encontrado.");
-        }
-    }
-
-    public void listarLivrosPorEditora(String nomeEditora) {
-        boolean encontrado = false;
-        for (Livro livro : livros) {
-            if (livro.getEditora().getNome().equalsIgnoreCase(nomeEditora)) {
-                System.out.println(livro);
-                encontrado = true;
-            }
-        }
-        if (!encontrado) {
-            System.out.println("Nenhum livro encontrado para essa editora.");
         }
     }
 }
