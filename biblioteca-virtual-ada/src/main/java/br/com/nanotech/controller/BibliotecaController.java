@@ -1,7 +1,6 @@
 package br.com.nanotech.controller;
 
 import br.com.nanotech.model.Autor;
-import br.com.nanotech.model.Editora;
 import br.com.nanotech.model.Livro;
 
 import java.util.ArrayList;
