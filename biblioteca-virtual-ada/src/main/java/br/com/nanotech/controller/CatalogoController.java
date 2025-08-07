@@ -40,13 +40,27 @@ public class CatalogoController {
     }
 
     public void exibirAutoresELivros() {
-        for (Autor autor : autores) {
-            System.out.println("\n" + autor.getNome() + " escreveu:");
-            for (Livro livro : autor.getLivros()) {
-                System.out.println(" - " + livro.getTitulo() + " (" + livro.getDataPublicacao() + ")");
-            }
+        if (autores.isEmpty()) {
+            System.out.println("Nenhum autor cadastrado no catálogo.");
+            return;
         }
+
+        System.out.println("\n=== CATÁLOGO DE AUTORES E LIVROS ===");
+        for (Autor autor : autores) {
+            System.out.printf("\n%s (nasc. %s) - %d livro(s):",
+                    autor.getNome(),
+                    autor.getDataNascimento(),
+                    autor.getLivros().size());
+
+            autor.getLivros().forEach(livro ->
+                    System.out.printf("\n  - %s (%s): %s",
+                            livro.getTitulo(),
+                            livro.getDataPublicacao(),
+                            livro.getResumo()));
+        }
+        System.out.println("\n\nTotal de autores: " + autores.size());
     }
+
 
     public List<Autor> getAutores() {
         return autores;
