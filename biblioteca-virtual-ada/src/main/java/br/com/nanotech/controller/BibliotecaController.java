@@ -53,21 +53,4 @@ public class BibliotecaController {
         return encontrados;
     }
 
-    public void listarLivrosPorAutor(String nomeAutor) {
-        System.out.println("\n📖 LIVROS DO AUTOR '" + nomeAutor + "':");
-        boolean encontrado = false;
-        for (Autor autor : autores) {
-            if (autor.getNome().equalsIgnoreCase(nomeAutor)) {
-                for (Livro livro : autor.getLivros()) {
-                    System.out.println(livro);
-                    System.out.println("--------------------");
-                }
-                encontrado = true;
-                break;
-            }
-        }
-        if (!encontrado) {
-            System.out.println("Autor não encontrado.");
-        }
-    }
 }

@@ -7,11 +7,13 @@ public class Livro {
     private String resumo;
     private Editora editora;
 
-    public Livro(String titulo, String dataPublicacao, String resumo) {
+    public Livro(String titulo, String dataPublicacao, String resumo, Editora editora) {
         this.titulo = titulo;
         this.dataPublicacao = dataPublicacao;
         this.resumo = resumo;
+        this.editora = editora;
     }
+
 
  /*  public void setAutor(Autor autor) {
         if (!autor.getLivros().contains(this)) {

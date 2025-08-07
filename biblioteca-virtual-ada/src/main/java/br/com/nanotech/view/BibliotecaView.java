@@ -1,6 +1,7 @@
 package br.com.nanotech.view;
 
 import br.com.nanotech.controller.BibliotecaController;
+import br.com.nanotech.controller.CatalogoController;
 import br.com.nanotech.model.Livro;
 
 import java.util.List;
@@ -8,10 +9,12 @@ import java.util.Scanner;
 
 public class BibliotecaView {
     private BibliotecaController bibliotecaController;
+    private CatalogoController catalogoController;
     private Scanner in = new Scanner(System.in);
 
-    public BibliotecaView(BibliotecaController bibliotecaController) {
+    public BibliotecaView(BibliotecaController bibliotecaController, CatalogoController catalogoController) {
         this.bibliotecaController = bibliotecaController;
+        this.catalogoController = catalogoController;
     }
 
     public void exibirMenu() {
@@ -32,6 +35,7 @@ public class BibliotecaView {
                 case 2 -> buscarPorTitulo();
                 case 3 -> buscarPorAutor();
                 case 4 -> buscarPorAno();
+                case 5 -> catalogoController.exibirAutoresEditorasELivros();
                 case 0 -> System.out.println("Encerrando...");
                 default -> System.out.println("Opção inválida!");
             }
@@ -60,7 +64,7 @@ public class BibliotecaView {
         if (livros.isEmpty()) {
             System.out.println("Nenhum livro encontrado.");
         } else {
-            System.out.println("\n📖 RESULTADOS:");
+            System.out.println("\n RESULTADOS:");
             for (Livro livro : livros) {
                 System.out.println(livro);
                 System.out.println("--------------------");
