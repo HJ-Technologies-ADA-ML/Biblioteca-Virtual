@@ -11,6 +11,10 @@ public class UsuarioController {
     private final List<Usuario> usuarios = new ArrayList<>();
     private Usuario usuarioLogado;
 
+    public Usuario getUsuarioLogado() {
+        return usuarioLogado;
+    }
+
     public void cadastrarUsuario(Usuario usuario) {
         if (buscarPorEmail(usuario.getEmail()) != null) {
             logger.warning("Tentativa de cadastro com email já existente: " + usuario.getEmail());
@@ -22,20 +26,23 @@ public class UsuarioController {
 
     public boolean login(String email, String senha) {
         Usuario usuario = buscarPorEmail(email);
-        if (usuario != null && usuario.getSenha().equals(senha)) {
+        if (usuario != null && usuario.getSenha() != null && usuario.getSenha().equals(senha)) {
             this.usuarioLogado = usuario;
             return true;
         }
         return false;
     }
 
-    private Usuario buscarPorEmail(String email) {
+    public Usuario buscarPorEmail(String email) {
+        System.out.println("Buscando usuário com email: " + email);
         for (Usuario usuario : usuarios) {
-            if (usuario.getEmail().equalsIgnoreCase(email)) {
+            System.out.println("Verificando usuário: " + usuario.getEmail());
+            if (usuario.getEmail() != null && usuario.getEmail().equalsIgnoreCase(email)) {
+                System.out.println("Usuário encontrado: " + usuario.getEmail());
                 return usuario;
             }
         }
+        System.out.println("Usuário não encontrado.");
         return null;
     }
-
 }

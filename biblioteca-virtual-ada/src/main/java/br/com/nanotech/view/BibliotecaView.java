@@ -28,10 +28,11 @@ public class BibliotecaView {
             System.out.println("0 - Sair");
             System.out.print("Escolha: ");
             try{
-                op = in.nextInt();
+                op = Integer.parseInt(in.nextLine());
             } catch (RuntimeException e) {
                 op = -1;
             }
+            in.nextLine();
 
             switch (op) {
                 case 1 -> bibliotecaController.listarTodosLivros();
