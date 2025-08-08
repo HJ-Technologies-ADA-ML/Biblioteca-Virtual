@@ -3,6 +3,7 @@ package br.com.nanotech.controller;
 import br.com.nanotech.model.Autor;
 import br.com.nanotech.model.Editora;
 import br.com.nanotech.model.Livro;
+import br.com.nanotech.model.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,11 @@ import java.util.List;
 public class CatalogoController {
 
     private List<Autor> autores = new ArrayList<>();
+    private Usuario usuarioAtual;
+
+    public void setUsuarioLogado(Usuario usuario) {
+     this.usuarioAtual = usuario;
+    }
 
     public CatalogoController() {
         carregarCatalogo();

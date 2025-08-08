@@ -22,34 +22,35 @@ public class UsuarioView {
 
     public void exibirMenuCliente() {
         catalogoController.carregarCatalogo();
-        int opcao = 0;
-        do{
+        int opcao = -1;
+
+        do {
             System.out.println("\n== Menu Usuário ==");
-            System.out.println("1 - Cadastrar Usuário\"");
-            System.out.println("2 - fazer login");
+            System.out.println("1 - Cadastrar Usuário");
+            System.out.println("2 - Fazer Login");
             System.out.println("0 - Sair");
             System.out.print("Escolha uma opção: ");
 
-            try{
-                opcao = in.nextInt();
-            } catch (RuntimeException e) {
-                opcao = -1;
+            try {
+                opcao = Integer.parseInt(in.nextLine());
+            } catch (NumberFormatException e) {
+                opcao = -1; // opção inválida
             }
 
             switch (opcao) {
                 case 1:
-                    fazerLogin();
+                    cadastrarUsuario();
                     break;
                 case 2:
-                    cadastrarUsuario();
+                    fazerLogin();
                     break;
                 case 0:
                     System.out.println("Saindo...");
                     break;
                 default:
-                    System.out.println("Opção inválida!");
+                    System.out.println("Opção inválida! Tente novamente.");
             }
-        }while(opcao != 0);
+        } while (opcao != 0);
     }
 
     private void fazerLogin() {
@@ -61,6 +62,8 @@ public class UsuarioView {
         boolean sucesso = usuarioController.login(email, senha);
         if (sucesso) {
             System.out.println("Login realizado com sucesso!");
+            Usuario usuarioLogado = usuarioController.getUsuarioLogado();
+            catalogoController.setUsuarioLogado(usuarioLogado);
             BibliotecaView bibliotecaView = new BibliotecaView(bibliotecaController, catalogoController);
             bibliotecaView.exibirMenu();
         } else {
