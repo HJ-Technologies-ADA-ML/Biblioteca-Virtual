@@ -27,8 +27,11 @@ public class BibliotecaView {
             System.out.println("4 - Buscar por ano de publicação");
             System.out.println("0 - Sair");
             System.out.print("Escolha: ");
-            op = in.nextInt();
-            in.nextLine();
+            try{
+                op = in.nextInt();
+            } catch (RuntimeException e) {
+                op = -1;
+            }
 
             switch (op) {
                 case 1 -> bibliotecaController.listarTodosLivros();
