@@ -72,7 +72,7 @@ public class CatalogoController {
 
                 System.out.printf("\n  - %s (%s): %s \n    Editora: %s (%s)",
                         livro.getTitulo(),
-                        livro.getDataPublicacao(),
+                        livro.getAnoPublicacao(),
                         livro.getResumo(),
                         nomeEditora,
                         enderecoEditora);
