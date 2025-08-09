@@ -44,7 +44,7 @@ public class BibliotecaController {
     public List<Livro> buscarPorAno(String ano) {
         List<Livro> encontrados = new ArrayList<>();
         for (Livro livro : livros) {
-            if (livro.getDataPublicacao() != null && livro.getDataPublicacao().equals(ano)) {
+            if (livro.getAnoPublicacao() != null && livro.getAnoPublicacao().equals(ano)) {
                 encontrados.add(livro);
             }
         }

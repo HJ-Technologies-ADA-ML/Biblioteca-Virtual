@@ -3,13 +3,13 @@ package br.com.nanotech.model;
 
 public class Livro {
     private String titulo;
-    private String dataPublicacao;
+    private String anoPublicacao;
     private String resumo;
     private Editora editora;
 
-    public Livro(String titulo, String dataPublicacao, String resumo, Editora editora) {
+    public Livro(String titulo, String anoPublicacao, String resumo, Editora editora) {
         this.titulo = titulo;
-        this.dataPublicacao = dataPublicacao;
+        this.anoPublicacao = anoPublicacao;
         this.resumo = resumo;
         this.editora = editora;
     }
@@ -22,8 +22,8 @@ public class Livro {
     }*/
 
 
-    public String getDataPublicacao() {
-        return dataPublicacao;
+    public String getAnoPublicacao() {
+        return anoPublicacao;
     }
 
 
@@ -48,7 +48,7 @@ public class Livro {
     @Override
     public String toString() {
         return "Livro: " + titulo +
-                "\nPublicado em: " + dataPublicacao +
+                "\nPublicado em: " + anoPublicacao +
                 "\nResumo: " + resumo +
                 "\nEditora: " + (editora != null ? editora.getNome() : "Não definida");
     }
