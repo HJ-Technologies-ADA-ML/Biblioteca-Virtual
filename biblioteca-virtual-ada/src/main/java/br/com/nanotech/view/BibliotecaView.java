@@ -25,6 +25,7 @@ public class BibliotecaView {
             System.out.println("2 - Buscar por título");
             System.out.println("3 - Buscar por autor");
             System.out.println("4 - Buscar por ano de publicação");
+            System.out.println("5 - Buscar por todos");
             System.out.println("0 - Sair");
             System.out.print("Escolha: ");
             try{
